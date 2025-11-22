@@ -1,0 +1,291 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ================================
+   🌈 THEME COLORS
+================================ */
+:root {
+  --primary: #46bcec; /* Bright Blue */
+  --secondary: #333333; /* Dark Charcoal */
+
+  --background: #ffffff;
+  --foreground: #171717;
+
+  --light-gray: #e9e9e9;
+  --off-black: #161515;
+
+  --white: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Dark Mode (Optional) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --secondary: #d9d9d9; /* subtle gray for text in dark mode */
+  }
+}
+
+/* ================================
+   🌐 GLOBAL BODY STYLES
+================================ */
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* ================================
+   📌 TYPOGRAPHY
+================================ */
+h1 {
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--secondary); /* charcoal heading */
+}
+
+h2 {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--secondary);
+}
+
+h3 {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 47px;
+  color: var(--secondary);
+}
+
+h4 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 33px;
+  color: var(--secondary);
+}
+
+p {
+  font-weight: 400;
+  line-height: 28px;
+  color: var(--off-black);
+}
+
+/* ================================
+   ✨ ANIMATIONS
+================================ */
+@keyframes slideFromTop {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide {
+  animation: slideFromTop 0.6s ease-out forwards;
+}
+
+/* ================================
+   ⭐ CUSTOM UTILITY CLASSES
+================================ */
+.bg-primary {
+  background-color: var(--primary);
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.border-primary {
+  border-color: var(--primary);
+}
+
+.bg-secondary {
+  background-color: var(--secondary);
+}
+
+.text-secondary {
+  color: var(--secondary);
+}
+
+.border-secondary {
+  border-color: var(--secondary);
+}
+nav a:hover {
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+.footer-link {
+  color: #b0b0b0;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #46bcec;
+  padding-left: 4px;
+}
+
+.footer-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #46bcec, #1b7fc1);
+  transition: width 0.3s ease;
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
+
+/* CTA gradient animation */
+@keyframes ctaGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-cta-gradient {
+  background: linear-gradient(90deg, #46bcec 0%, #1b7fc1 50%, #46bcec 100%);
+  background-size: 200% 200%;
+  animation: ctaGradient 4s ease infinite;
+  -webkit-background-clip: text;
+  /* -webkit-text-fill-color: transparent; */
+  /* we will override text-fill when used on buttons: */
+  color: white !important;
+  background-clip: padding-box;
+}
+
+/* subtle float on decorative blobs (used already in header/footer) */
+@keyframes floatSlow {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.blob-float {
+  animation: floatSlow 8s ease-in-out infinite;
+}
+@keyframes gradient-slide {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-slide {
+  background-size: 200% 200%;
+  animation: gradient-slide 4s linear infinite alternate;
+}
+
+/* small shadow + glass effect tweak */
+.bg-white\/3 {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* footer link underline (if you keep .footer-link) */
+.footer-link {
+  color: #b0b0b0;
+  position: relative;
+  transition: all 0.25s ease;
+}
+.footer-link:hover {
+  color: #46bcec;
+  padding-left: 4px;
+}
+.footer-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #46bcec, #1b7fc1);
+  transition: width 0.25s ease;
+  border-radius: 2px;
+}
+.footer-link:hover::after {
+  width: 100%;
+}
+
+/* @keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+.animate-float-slow {
+  animation: float 8s ease-in-out infinite;
+}
+.delay-500 {
+  animation-delay: 0.5s;
+} */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+.animate-float-slow {
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.animate-slide-in {
+  animation: slideIn 0.5s ease forwards;
+}
+@keyframes gradient-x {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-x {
+  background: linear-gradient(90deg, #46bcec, #1b7fc1, #46bcec);
+  background-size: 200% 200%;
+  animation: gradient-x 4s ease infinite;
+}
